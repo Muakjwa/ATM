@@ -1,17 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Account.h"
 
 using namespace std;
 
 class Card {
 private:
-	string BankName;
-	int SerialNum;
-
+	friend class Account;
 public:
 	Card();
-	Card(string BankName, int SerialNum);
-	string getName();
-	int getSerialNum();
 };
