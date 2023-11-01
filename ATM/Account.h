@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// git stash && git pull origin master && git stash pop
+
 class Account{
 private:
 	User user;
