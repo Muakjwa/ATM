@@ -138,7 +138,7 @@ int main()
                 cout << "카드번호를 입력해주세요 : " << endl;
             }
             else {
-                //영어로 작성
+                cout << "hello";
             }
         }
     }
