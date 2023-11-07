@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Account.h"
 
 using namespace std;
 
@@ -11,7 +10,7 @@ class User {
 private:
 	int accountCnt = 0;
 	string name;
-	Account accountArr[100];
+	//Account accountArr[100];
 
 public:
 	User();

@@ -4,11 +4,18 @@
 #include "ATM.h"
 #include "Bank.h"
 #include "User.h"
+#include "Account.h"
+
+class ATM;
+class Bank;
+class User;
+class Account;
 
 using namespace std;
 
 static int BankCnt = 0;
 static int UserCnt = 0;
+static int AccountCnt = 0;
 static int ATMCnt = 0;
 
 int main()
@@ -55,6 +62,7 @@ int main()
 
 
     // User Selection Page
+    Account* AccountArr[100];
     ATM* ATMArr[100];
     while (1)
     {
@@ -69,19 +77,22 @@ int main()
         if (SelectMenu == 'C' or SelectMenu == 'c')
             break;
 
-        // ATM 생성 코드
+      
+        // ------------------------------  ATM 생성 코드  --------------------------------
         if (SelectMenu == '1')
         {
             int SerialNum;
             cout << "Serial Number를 입력해주세요 : ";
             cin >> SerialNum;
-            cout << "연결되어 있는 Bank를 입력해주세요 (끝나면 C입력) : " << endl;
+            
             string BankName;
             ATMArr[ATMCnt] = new ATM(SerialNum);
+            cout << "연결되어 있는 Bank를 입력해주세요 (끝나면 C입력) : " << endl;
 
             // ATM이 Single인지 Multi인지 결정 (Bank들을 입력받는다)
             while (1)
-            {
+            {  
+                cin >> BankName;
                 if (BankName == "C" or BankName == "c")
                     break;
                 else
@@ -114,12 +125,44 @@ int main()
             string UserName;
             cout << "이름을 입력하세요 : ";
             cin >> UserName;
-            int i = 0;
 
             //User loop를 돌면서 해당 이름과 동일한 사람이 없으면 오류 있으면 그 사람으로 계좌 생성
+            for (int i = 0; i < UserCnt; i++) {
+                if (UserArr[i]->getUserName() == UserName) {
 
-            cout << "사용하실 계좌번호를 입력하세요 : ";
-            cin >> AccountNum;
+                    cout << "사용하실 계좌번호를 입력하세요 : ";
+                    cin >> AccountNum;
+
+                    int password;
+                    cout << "사용하실 비밀번호를 입력해주세요 : ";
+                    cin >> password;
+
+                    string accountBank;
+                    cout << "전용 은행을 입력하세요 : ";
+                    cin >> accountBank;
+                    for (int j = 0; j < BankCnt; j++) {
+                        if (BankArr[j]->getName() == accountBank) {
+                            AccountArr[AccountCnt] = new Account(BankArr[j], UserArr[i], AccountNum, password);
+
+                            int money;
+                            cout << "최초 입금액을 입력하세요 : ";
+                            cin >> money;
+                            AccountArr[AccountCnt]->deposit(money);
+
+                            AccountCnt++;
+                            break;
+                        }
+                        else if ((j == BankCnt - 1) and (BankArr[j]->getName() != accountBank)) {
+                            cout << "There is no bank" << endl;
+                        }
+                    }
+                }
+
+                // 여기서 cout가 계속 실행되는 error가 있다.
+                else if ((i == UserCnt - 1) and (UserArr[i]->getUserName() != UserName)) {
+                    cout << "There is no user name." << endl;
+                }
+            }
             //위의 User loop에서 찾은 user에 계좌 생성
         }
 
@@ -130,15 +173,14 @@ int main()
             cout << "1. 한국어" << endl;
             cout << "2. English" << endl;
 
-            do {
-                cin >> SelectLang;
-            } while (SelectLang == '1' or SelectLang == '0');
-
+            cin >> SelectLang;
+            
+            
             if (SelectLang == '1') {
-                cout << "카드번호를 입력해주세요 : " << endl;
-            }
-            else {
-                cout << "hello";
+                cout << "1. 입금" << endl;
+                cout << "2. 출금" << endl;
+                cout << "3. 송금" << endl;
+                cout << "4. 영수증 출력" << endl;
             }
         }
     }

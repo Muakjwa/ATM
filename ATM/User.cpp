@@ -1,6 +1,7 @@
 #include "User.h"
 #include <iostream>
 #include <string>
+#include "Account.h"
 
 using namespace std;
 
@@ -15,11 +16,10 @@ User::User(string UserName) {
 }
 
 string User::getUserName() {
-	cout << this->name << endl;
 	return this->name;
 }
 
 void User::setAccountArr(Account account) {
-	this->accountArr[accountCnt] = account;
+	//this->accountArr[accountCnt] = account;
 	accountCnt += 1;
 }
