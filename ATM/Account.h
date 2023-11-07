@@ -9,6 +9,9 @@ using namespace std;
 
 // git stash && git pull origin master && git stash pop
 
+class User;
+class Bank;
+
 class Account{
 private:
 	friend class Card;

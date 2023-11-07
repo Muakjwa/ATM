@@ -1,0 +1,20 @@
+﻿  Account.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\User.h(14,10): error C2079: 'User::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Bank.h(12,10): error C2079: 'Bank::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.cpp(15,94): error C2572: 'Account::Account': 기본 인수 재정의. 매개 변수 1
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(27,2): message : 'Account::Account' 선언을 참조하십시오.
+  main.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\User.h(14,10): error C2079: 'User::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(19,7): error C2079: 'Account::bank'은(는) 정의되지 않은 class 'Bank'을(를) 사용합니다.
+  Bank.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\User.h(14,10): error C2079: 'User::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(19,7): error C2079: 'Account::bank'은(는) 정의되지 않은 class 'Bank'을(를) 사용합니다.
+  ATM.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\User.h(14,10): error C2079: 'User::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(19,7): error C2079: 'Account::bank'은(는) 정의되지 않은 class 'Bank'을(를) 사용합니다.
+  User.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Bank.h(12,10): error C3646: 'accountArr': 알 수 없는 재정의 지정자입니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Bank.h(12,20): error C2143: 구문 오류: ','이(가) '[' 앞에 없습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Bank.h(12,25): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(18,7): error C2079: 'Account::user'은(는) 정의되지 않은 class 'User'을(를) 사용합니다.
+  코드를 생성하고 있습니다...

@@ -3,29 +3,22 @@
   <Class Name="ATM">
     <Position X="6.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAEAAAAAAgAAAAgAAAAAAAAAAAAAAAAIAQAAAAg=</HashCode>
+      <HashCode>gAAAAAEAAAAAAgAAAAgAAAAIBAEAAAAAAAAMAwAAAAg=</HashCode>
       <FileName>ATM.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bank">
     <Position X="2" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgEAAAAAAA=</HashCode>
+      <HashCode>AQgAAAAAAAIAAAAAAAAAAAAAAAAAAAAAABgEAAAAAAA=</HashCode>
       <FileName>Bank.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="User">
     <Position X="9" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAIAAAAAAAAAAAEAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IAABAAAAAAIAAAAAAAAAAAEAAAAEgAAAAAAAAAAAAAA=</HashCode>
       <FileName>User.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Card">
-    <Position X="3.25" Y="3.5" Width="1.25" />
-    <TypeIdentifier>
-      <HashCode>AAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgEAAAAAAA=</HashCode>
-      <FileName>Card.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Account">
