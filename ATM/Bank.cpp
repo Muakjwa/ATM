@@ -20,3 +20,11 @@ string Bank::getName() {
 int Bank::getSerialNum() {
 	return this->SerialNum;
 }
+
+int Bank::getAccountNum() {
+	return AccountCnt;
+}
+
+Account* Bank::getAccountArr(int cnt) {
+	return &accountArr[cnt];
+}

@@ -5,30 +5,26 @@
 
 using namespace std;
 
-int ATM::bankCnt = 0;
+int ATM::subBankCnt = 0;
 
-ATM::ATM() {
+ATM::ATM() {}
 
+Bank ATM::getPrimaryBank() {
+	return primaryBank;
 }
 
-ATM::ATM(int SerialNum) {
-	this->serialNum = SerialNum;
+Bank ATM::getSubBank(int cnt) {
+	return subBank[cnt];
 }
 
-string ATM::getBankName() {
-	return bank->getName();
+void ATM::setPrimaryBank(string BankName) {
+	//this->primaryBank = BankName;
 }
 
-void ATM::addBank(string BankName) {
-	//this->bank[this->bankCnt] = BankName;
-}
-
-void ATM::setDeposit(int* moneyPage) {
-
-}
-
-void ATM::deposit(int* moneyPage) {
-
+void ATM::deposit(int moneyPage[]) {
+	for (int i = 0; i < 4; i++) {
+		balance[i] += moneyPage[i];
+	}
 }
 
 void ATM::withdrawal(int* moneyPage) {
@@ -41,4 +37,12 @@ void ATM::transfer(Account sender, Account reciever, int money) {
 
 void ATM::transfer(Account sender, Account reciever, int* moneyPage) {
 
+}
+
+int ATM::getSerialNum() {
+	return serialNum;
+}
+
+int ATM::getSubBankNum() {
+	return subBankCnt;
 }

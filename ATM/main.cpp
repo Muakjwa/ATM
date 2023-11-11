@@ -5,6 +5,8 @@
 #include "Bank.h"
 #include "User.h"
 #include "Account.h"
+#include "SingleATM.h"
+#include "MultiATM.h"
 
 class ATM;
 class Bank;
@@ -17,6 +19,9 @@ static int BankCnt = 0;
 static int UserCnt = 0;
 static int AccountCnt = 0;
 static int ATMCnt = 0;
+
+// Bank와 ATM serial 넘버 입력받는게 아니라 자동으로 생성되게 (ex BankCnt + 100)
+// Bank이름 겹치는거 없는지 확인해주기
 
 int main()
 {
@@ -81,23 +86,48 @@ int main()
         // ------------------------------  ATM 생성 코드  --------------------------------
         if (SelectMenu == '1')
         {
-            int SerialNum;
-            cout << "Serial Number를 입력해주세요 : ";
-            cin >> SerialNum;
+            char SingleORMulti;
+            cout << "1. SingleATM" << endl;
+            cout << "2. MultiATM" << endl;
+            cin >> SingleORMulti;
             
-            string BankName;
-            ATMArr[ATMCnt] = new ATM(SerialNum);
-            cout << "연결되어 있는 Bank를 입력해주세요 (끝나면 C입력) : " << endl;
+            int SerialNum;
+            cout << "ATM Serial Number를 입력해주세요 : ";
+            cin >> SerialNum;
 
-            // ATM이 Single인지 Multi인지 결정 (Bank들을 입력받는다)
-            while (1)
-            {  
-                cin >> BankName;
-                if (BankName == "C" or BankName == "c")
-                    break;
-                else
-                {
-                    ATMArr[ATMCnt]->addBank(BankName);
+            string primaryBank;
+            cout << "메인 은행을 입력해주세요 : ";
+            cin >> primaryBank;
+
+            // BankArr에 BankName이 없으면 에러 출력 코드 작성해야함 에러시 다시 입력받을 수 있도록 하면 됨
+            for (int i = 0; i < BankCnt; i++) {
+                if (BankArr[i]->getName() == primaryBank) {
+                    if (SingleORMulti == '1') {
+                        ATM single = SingleATM(SerialNum, BankArr[i]);
+                        ATMArr[ATMCnt] = &single;
+                    }
+                    else if (SingleORMulti == '2') {
+                        MultiATM multi = MultiATM(SerialNum, BankArr[i]);
+
+                        string subName;
+
+                        // ATM이 Single인지 Multi인지 결정 (Bank들을 입력받는다)
+                        while (1)
+                        {
+                            cout << "연결되어 있는 Bank를 입력해주세요 (끝나면 C입력) : " << endl;
+                            cin >> subName;
+                            if (subName == "C" or subName == "c")
+                                break;
+                            for (int j = 0; j < BankCnt;j++) {
+                                if (BankArr[j]->getName() == subName) {
+                                    multi.addSubBank(BankArr[j]);
+                                    break;
+                                }
+                            }
+                        }
+                        ATM multi_to_ATM = (ATM)multi;
+                        ATMArr[ATMCnt] = &multi_to_ATM;
+                    }
                 }
             }
 
@@ -113,7 +143,7 @@ int main()
             cout << "1,000 : ";
             cin >> moneyPage[0];
 
-            ATMArr[ATMCnt]->setDeposit(moneyPage);
+            ATMArr[ATMCnt]->deposit(moneyPage);
             ATMCnt++;
         }
 
@@ -122,6 +152,7 @@ int main()
         {
             cout << "계좌를 생성하겠습니다." << endl;
             long long int AccountNum;
+            long long int cardNum;
             string UserName;
             cout << "이름을 입력하세요 : ";
             cin >> UserName;
@@ -133,6 +164,9 @@ int main()
                     cout << "사용하실 계좌번호를 입력하세요 : ";
                     cin >> AccountNum;
 
+                    cout << "사용하실 카드번호를 입력하세요 : ";
+                    cin >> cardNum;
+
                     int password;
                     cout << "사용하실 비밀번호를 입력해주세요 : ";
                     cin >> password;
@@ -140,9 +174,10 @@ int main()
                     string accountBank;
                     cout << "전용 은행을 입력하세요 : ";
                     cin >> accountBank;
+
                     for (int j = 0; j < BankCnt; j++) {
                         if (BankArr[j]->getName() == accountBank) {
-                            AccountArr[AccountCnt] = new Account(BankArr[j], UserArr[i], AccountNum, password);
+                            AccountArr[AccountCnt] = new Account(BankArr[j], UserArr[i], AccountNum, cardNum, password);
 
                             int money;
                             cout << "최초 입금액을 입력하세요 : ";
@@ -177,10 +212,143 @@ int main()
             
             
             if (SelectLang == '1') {
+                int whatATM;
+                while (1) {
+                    for (int i = 0; i < ATMCnt; i++) {
+                        cout << i + 1 << ". 주 은행 : " << ATMArr[i]->getPrimaryBank().getName() << ", 시리얼 번호 : " << ATMArr[i]->getSerialNum();
+                    }
+                    cin >> whatATM;
+                    if (whatATM <= ATMCnt) {
+                        whatATM -= 1;
+                        break;
+                    }
+                    else {
+                        cout << "해당 ATM은 존재하지 않습니다." << endl;
+                    }
+                }
+
+                ATM ChosenATM = *ATMArr[whatATM];
+
+                bool isPrimary = false;
+                bool isSub = false;
+                Account* userAccount;
+
+                do {
+                    long long int cardNum;
+                    cout << "카드 번호를 입력해주세요 : ";
+                    cin >> cardNum;
+                    for (int i = 0; i < ChosenATM.getPrimaryBank().getAccountNum(); i++) {
+                        if (ChosenATM.getPrimaryBank().getAccountArr(i)->getCardNum() == cardNum) {
+                            userAccount = ChosenATM.getPrimaryBank().getAccountArr(i);
+                            isPrimary = true;
+                            break;
+                        }
+                    }
+                    if (isPrimary == false) {
+                        for (int i = 0; ChosenATM.getSubBankNum(); i++) {
+                            for (int j = 0; ChosenATM.getSubBank(i).getAccountNum(); j++) {
+                                if (ChosenATM.getSubBank(i).getAccountArr(j)->getCardNum() == cardNum) {
+                                    userAccount = ChosenATM.getSubBank(i).getAccountArr(j);
+                                    isSub = true;
+                                }
+                            }
+                        }
+                        if (isSub == false) {
+                            cout << "유효하지 않은 카드번호입니다." << endl;
+                        }
+                    }
+                } while (!isPrimary and !isSub);
+
+                int pwFailCnt = 3;
+                int gotPW;
+                while (pwFailCnt > 0){
+                    if (pwFailCnt < 3) {
+                        cout << "틀렸습니다. " << pwFailCnt << "번의 기회가 남았습니다." << endl;
+                    }
+                    cout << "비밀번호를 입력해주세요 : ";
+                    cin >> gotPW;
+                    if (gotPW == userAccount->getPassword()) {
+                        break;
+                    }
+                    --pwFailCnt;
+                }
+
+                if (pwFailCnt == 0) {
+                    cout << "틀렸습니다. ATM 실행이 종료됩니다." << endl;
+                    break;
+                }
+
+                char operation;
                 cout << "1. 입금" << endl;
                 cout << "2. 출금" << endl;
                 cout << "3. 송금" << endl;
                 cout << "4. 영수증 출력" << endl;
+                cin >> operation;
+
+                if (operation == '1') {
+                    cout << "입금할 금액을 입력해주세요." << endl;
+                    if (isSub == true) {
+                        cout << "수수료 1000원을 추가로 입금해주세요." << endl;
+                    }
+
+                    // cash = 1 , check = 2
+                    char cashORcheck;
+
+                    cout << "현금을 사용할지 수표를 사용할지 골라주세요." << endl;
+                    cout << "1. 현금" << endl;
+                    cout << "2. 수표" << endl;
+                    cin >> cashORcheck;
+                    
+                    do{
+                        if (cashORcheck != '1' and cashORcheck != '2') {
+                            cout << "잘못된 입력입니다." << endl;
+                        }
+                    } while (cashORcheck != '1' and cashORcheck != '2');
+
+                    if (cashORcheck == '1') {
+                        // Deposit 입력받는다.
+                        int moneyPage[4];
+                        cout << "50,000 : ";
+                        cin >> moneyPage[3];
+                        cout << "10,000 : ";
+                        cin >> moneyPage[2];
+                        cout << "5,000 : ";
+                        cin >> moneyPage[1];
+                        cout << "1,000 : ";
+                        cin >> moneyPage[0];
+
+                        if (isSub == true and moneyPage[0] == 0) {
+                            cout << "수수료가 입금되지 않았습니다. 입금 실패!!" << endl;
+                        }
+                        else if (moneyPage[0] + moneyPage[1] + moneyPage[2] + moneyPage[3] > 50) {
+                            cout << "너무 많은 현금이 입금되었습니다. 입금 실패!!" << endl;
+                        }
+                        else {
+                            userAccount->deposit(50000 * moneyPage[3] + 10000 * moneyPage[2] + 5000 * moneyPage[1] + 1000 * (moneyPage[0] - (int)isSub));
+                            ChosenATM.deposit(moneyPage);
+                        }
+                    }
+                    else {
+                        string check;
+                        int totalCheck;
+                        int checkNum = 0;
+                        cout << "수표 값을 입력해주세요. C가 입력되면 입금이 종료됩니다." << endl;
+                        do {
+                            cin >> check;
+                            if (check != "C" and check != "c") {
+                                totalCheck += stoi(check);
+                            }
+                            checkNum++;
+                        } while (check != "C" and check != "c" and checkNum <= 30);
+
+                        if (checkNum > 30) {
+                            cout << "너무 많은 수표가 입금되었습니다. 입금 실패!!" << endl;
+                        }
+                        else {
+                            userAccount->deposit(totalCheck);
+                        }
+                    }
+                }
             }
         }
     }

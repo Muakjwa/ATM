@@ -1,4 +1,39 @@
-﻿  Bank.cpp
+﻿  Account.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Bank.h(13,10): error C2079: 'Bank::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
+  Card.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Bank.h(13,10): error C2079: 'Bank::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
   main.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,7): error C3646: 'bank': 알 수 없는 재정의 지정자입니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,11): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,10): error C2061: 구문 오류: 식별자 'Bank'
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,2): error C2535: 'Account::Account(void)': 멤버 함수를 이미 정의했거나 선언했습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(20,2): message : 'Account::Account' 선언을 참조하십시오.
+C:\Users\pq220\바탕 화면\ATM\ATM\main.cpp(180,65): error C2661: 'Account::Account': 오버로드된 함수에서 5개의 인수를 사용하지 않습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\main.cpp(180,65): message : 인수 목록 '(Bank *, User *, __int64, __int64, int)'을(를) 일치시키는 동안
+  Bank.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,7): error C3646: 'bank': 알 수 없는 재정의 지정자입니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,11): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,10): error C2061: 구문 오류: 식별자 'Bank'
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,2): error C2535: 'Account::Account(void)': 멤버 함수를 이미 정의했거나 선언했습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(20,2): message : 'Account::Account' 선언을 참조하십시오.
+  ATM.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,7): error C3646: 'bank': 알 수 없는 재정의 지정자입니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,11): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,10): error C2061: 구문 오류: 식별자 'Bank'
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,2): error C2535: 'Account::Account(void)': 멤버 함수를 이미 정의했거나 선언했습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(20,2): message : 'Account::Account' 선언을 참조하십시오.
+  MultiATM.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,7): error C3646: 'bank': 알 수 없는 재정의 지정자입니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,11): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,10): error C2061: 구문 오류: 식별자 'Bank'
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,2): error C2535: 'Account::Account(void)': 멤버 함수를 이미 정의했거나 선언했습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(20,2): message : 'Account::Account' 선언을 참조하십시오.
+  SingleATM.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,7): error C3646: 'bank': 알 수 없는 재정의 지정자입니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(12,11): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,10): error C2061: 구문 오류: 식별자 'Bank'
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(21,2): error C2535: 'Account::Account(void)': 멤버 함수를 이미 정의했거나 선언했습니다.
+C:\Users\pq220\바탕 화면\ATM\ATM\Account.h(20,2): message : 'Account::Account' 선언을 참조하십시오.
+  User.cpp
+C:\Users\pq220\바탕 화면\ATM\ATM\Bank.h(13,10): error C2079: 'Bank::accountArr'은(는) 정의되지 않은 class 'Account'을(를) 사용합니다.
   코드를 생성하고 있습니다...
-  ATM.vcxproj -> C:\Users\pq220\바탕 화면\ATM\x64\Debug\ATM.exe
