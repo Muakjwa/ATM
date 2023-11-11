@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
-    <ClCompile Include="Card.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="ATM.cpp" />
@@ -140,7 +139,6 @@
     <ClInclude Include="Account.h" />
     <ClInclude Include="ATM.h" />
     <ClInclude Include="Bank.h" />
-    <ClInclude Include="Card.h" />
     <ClInclude Include="MultiATM.h" />
     <ClInclude Include="SingleATM.h" />
     <ClInclude Include="User.h" />

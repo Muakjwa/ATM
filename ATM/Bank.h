@@ -5,12 +5,14 @@
 
 using namespace std;
 
+class Account;
+
 class Bank {
 private:
 	string BankName;
 	int SerialNum;
 	int AccountCnt;
-	Account accountArr[100];
+	Account *accountArr[100];
 
 public:
 	Bank();

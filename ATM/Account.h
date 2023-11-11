@@ -4,12 +4,14 @@
 #include "User.h"
 #include "Bank.h"
 
+class Bank;
+
 using namespace std;
 
 class Account{
 private:
-	User user;
-	Bank bank;
+	User *user;
+	Bank *bank;
 	long long int accountNum;
 	long long int cardNum;
 	long long int balance = 0;

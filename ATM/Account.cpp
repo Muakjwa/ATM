@@ -26,7 +26,7 @@ void Account::withdrawal(int cash) {
 }
 
 void Account::setUser(User* set_user) {
-	this->user = *set_user;
+	this->user = set_user;
 }
 
 long long int Account::getCardNum() {
@@ -34,7 +34,7 @@ long long int Account::getCardNum() {
 }
 
 string Account::getName() {
-	return user.getUserName();
+	return user->getUserName();
 	//사용자 이름 출력?
 }
 string Account::snapShot() {

@@ -231,7 +231,7 @@ int main()
 
                 bool isPrimary = false;
                 bool isSub = false;
-                Account* userAccount;
+                Account* userAccount = NULL;
 
                 do {
                     long long int cardNum;
@@ -261,21 +261,23 @@ int main()
 
                 int pwFailCnt = 3;
                 int gotPW;
-                while (pwFailCnt > 0){
-                    if (pwFailCnt < 3) {
-                        cout << "틀렸습니다. " << pwFailCnt << "번의 기회가 남았습니다." << endl;
+                if (isPrimary == true or isSub == true) {
+                    while (pwFailCnt > 0) {
+                        if (pwFailCnt < 3) {
+                            cout << "틀렸습니다. " << pwFailCnt << "번의 기회가 남았습니다." << endl;
+                        }
+                        cout << "비밀번호를 입력해주세요 : ";
+                        cin >> gotPW;
+                        if (gotPW == userAccount->getPassword()) {
+                            break;
+                        }
+                        --pwFailCnt;
                     }
-                    cout << "비밀번호를 입력해주세요 : ";
-                    cin >> gotPW;
-                    if (gotPW == userAccount->getPassword()) {
+
+                    if (pwFailCnt == 0) {
+                        cout << "틀렸습니다. ATM 실행이 종료됩니다." << endl;
                         break;
                     }
-                    --pwFailCnt;
-                }
-
-                if (pwFailCnt == 0) {
-                    cout << "틀렸습니다. ATM 실행이 종료됩니다." << endl;
-                    break;
                 }
 
                 char operation;
@@ -330,7 +332,7 @@ int main()
                     }
                     else {
                         string check;
-                        int totalCheck;
+                        int totalCheck = 0;
                         int checkNum = 0;
                         cout << "수표 값을 입력해주세요. C가 입력되면 입금이 종료됩니다." << endl;
                         do {

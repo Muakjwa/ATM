@@ -1,6 +1,9 @@
 #include "Bank.h"
+#include "Account.h"
 #include <iostream>
 #include <string>
+
+class Account;
 
 using namespace std;
 
@@ -26,5 +29,5 @@ int Bank::getAccountNum() {
 }
 
 Account* Bank::getAccountArr(int cnt) {
-	return &accountArr[cnt];
+	return accountArr[cnt];
 }
