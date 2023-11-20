@@ -10,11 +10,10 @@ class Bank;
 class ATM;
 
 SingleATM::SingleATM(){
-	this->balance[4] = { 0, };
 }
 
 SingleATM::SingleATM(int SerialNum, Bank* primaryBank){
-	this->serialNum = SerialNum;
-	this->primaryBank = *primaryBank;
-	this->balance[4] = {0,};
+	setSerialNum(SerialNum);
+	setPrimaryBank(primaryBank);
+	set_balance(0, 0, 0, 0);
 }

@@ -21,8 +21,12 @@ void Account::deposit(int cash) {
 	//balance에 cash 추가
 }
 
+long long int Account::getBalance() {
+	return balance;
+}
+
 void Account::withdrawal(int cash) {
-	//balance에서 인출
+	balance -= cash;
 }
 
 void Account::setUser(User* set_user) {
