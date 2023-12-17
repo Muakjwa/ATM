@@ -7,4 +7,5 @@
 
 ## 방식
 <img width="377" alt="image" src="https://github.com/Muakjwa/ATM/assets/94523712/43789c9c-4577-4047-b4c9-d8faa22dad5e">
+
 사용자가 ATM을 통해서 Deposit, Withrawal, Transfer를 진행할 수 있다.
