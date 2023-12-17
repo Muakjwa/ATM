@@ -1,0 +1,3 @@
+*-------------------- Transaction History --------------------*
+1. [Withdrawal] Card Number : 1, Sender Account Number : 100100111111, Reciever Account Number : 300300333333, Transfer amount : 1000, Fee : 2000
+2. [Withdrawal] Card Number : 3, Sender Account Number : 300300333333, Reciever Account Number : 100100111111, Transfer amount : 1000, Fee : 2000

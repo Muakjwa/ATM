@@ -132,6 +132,7 @@
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="ATM.cpp" />
     <ClCompile Include="MultiATM.cpp" />
+    <ClCompile Include="Session.cpp" />
     <ClCompile Include="SingleATM.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
@@ -140,6 +141,7 @@
     <ClInclude Include="ATM.h" />
     <ClInclude Include="Bank.h" />
     <ClInclude Include="MultiATM.h" />
+    <ClInclude Include="Session.h" />
     <ClInclude Include="SingleATM.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

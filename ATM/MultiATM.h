@@ -9,6 +9,6 @@ using namespace std;
 class MultiATM : public ATM {
 public:
 	MultiATM();
-	MultiATM(int SerialNum, Bank* primaryBank);
+	MultiATM(string SerialNum, Bank* primaryBank, bool bilingual);
 	void addSubBank(Bank* BankName);
 };

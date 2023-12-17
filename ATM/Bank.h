@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Account.h"
+#include <vector>
 
 using namespace std;
 
@@ -11,8 +12,7 @@ class Bank {
 private:
 	string BankName;
 	int SerialNum;
-	int AccountCnt;
-	Account *accountArr[100];
+	vector<Account*> accountArr;
 
 public:
 	Bank();
@@ -20,5 +20,6 @@ public:
 	string getName();
 	int getSerialNum();
 	int getAccountNum();
+	void addAccount(Account* account);
 	Account* getAccountArr(int cnt);
 };

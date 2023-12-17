@@ -25,9 +25,9 @@ public:
 	void deposit(int cash);
 	long long int getBalance();
 	void withdrawal(int cash);
-	void setUser(User *set_user);
 	long long int getCardNum();
-	string getName();
+	long long int getAccountNum();
+	string getUserName();
 	string snapShot();
 	int getPassword();
 };

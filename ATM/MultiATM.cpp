@@ -10,16 +10,14 @@ class Bank;
 class ATM;
 
 MultiATM::MultiATM() {
-	set_balance(0, 0, 0, 0);
 }
 
-MultiATM::MultiATM(int SerialNum, Bank* primaryBank) {
+MultiATM::MultiATM(string SerialNum, Bank* primaryBank, bool bilingual) {
+	setBilingual(bilingual);
 	setSerialNum(SerialNum);
 	setPrimaryBank(primaryBank);
-	set_balance(0, 0, 0, 0);
 }
 
 void MultiATM::addSubBank(Bank* BankName) {
-	this->subBank[subBankCnt] = *BankName;
-	subBankCnt++;
+	this->subBank.push_back(BankName);
 }

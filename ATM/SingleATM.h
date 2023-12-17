@@ -9,5 +9,5 @@ using namespace std;
 class SingleATM : public ATM {
 public:
 	SingleATM();
-	SingleATM(int SerialNum, Bank* primaryBank);
+	SingleATM(string SerialNum, Bank* primaryBank, bool bilingual);
 };

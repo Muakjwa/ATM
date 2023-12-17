@@ -8,7 +8,6 @@ class Account;
 using namespace std;
 
 Bank::Bank() {
-
 }
 
 Bank::Bank(string BankName, int SerialNum) {
@@ -25,7 +24,11 @@ int Bank::getSerialNum() {
 }
 
 int Bank::getAccountNum() {
-	return AccountCnt;
+	return accountArr.size();
+}
+
+void Bank::addAccount(Account* account) {
+	accountArr.push_back(account);
 }
 
 Account* Bank::getAccountArr(int cnt) {

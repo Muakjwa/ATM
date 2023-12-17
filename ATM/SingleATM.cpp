@@ -12,8 +12,8 @@ class ATM;
 SingleATM::SingleATM(){
 }
 
-SingleATM::SingleATM(int SerialNum, Bank* primaryBank){
+SingleATM::SingleATM(string SerialNum, Bank* primaryBank, bool bilingual){
+	setBilingual(bilingual);
 	setSerialNum(SerialNum);
 	setPrimaryBank(primaryBank);
-	set_balance(0, 0, 0, 0);
 }
